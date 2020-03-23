@@ -7,7 +7,7 @@ A simple tool to simulate many FBM trajectories, quickly. This repository uses t
 
 ## Types of diffusion coefficient
 
-$x$ is this math?
+\\x\\ is this math?
 
 ## Example usage
 
