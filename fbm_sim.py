@@ -257,34 +257,30 @@ class FractionalBrownianMotion(MultivariateNormal):
 
         dt :  float, the time interval for each step
 
-        D_type : int, the type of diffusion coefficient
-            (either 1 or 2). If *1*, the covariance 
-            matrix is multiplied by the diffusion 
-            coefficient, and it has units of 
-            space^2 time^{-2*hurst}. If *2*, the time
-            indices are multiplied by the diffusion
-            coefficient (prior to computation of
-            the covariance matrix) and D has
-            units of space^2 time^-1.
+        D_kind : int, the type of diffusion coefficient
+            (either 1 or 2). If *1*, D has units of 
+            space^2 time^{-2H}. If *2*, D has units of 
+            space^2 time^-1. See `definitions.ipynb` for
+            more details.
 
     """
-    def __init__(self, N, hurst, D=1.0, dt=1.0, D_type=1):
+    def __init__(self, N, hurst, D=1.0, dt=1.0, D_kind=1):
         self.N = N 
         self.hurst = hurst 
         self.D = D 
         self.dt = dt 
-        self.D_type = D_type
-        assert D_type in [1, 2]
+        self.D_kind = D_kind
+        assert D_kind in [1, 2]
 
         # Build the FBM covariance matrix
-        if D_type == 1:
+        if D_kind == 1:
             T, S = (np.indices((N, N))+1) * dt 
-            self.C = D * 0.5*(np.power(T, 2*hurst) + \
+            self.C = D * (np.power(T, 2*hurst) + \
                 np.power(S, 2*hurst) - \
                 np.power(np.abs(T-S), 2*hurst))
-        elif D_type == 2:
+        elif D_kind == 2:
             T, S = (np.indices((N, N))+1) * dt * D
-            self.C = 0.5*(np.power(T, 2*hurst) + \
+            self.C = (np.power(T, 2*hurst) + \
                 np.power(S, 2*hurst) - \
                 np.power(np.abs(T-S), 2*hurst))
 

@@ -5,9 +5,9 @@ Simulate short fractional Brownian motion (FBM) trajectories in pure Python
 
 A simple tool to simulate many FBM trajectories, quickly. This repository uses the version of the FBM based on the Riemann-Liouville integral, rather than Mandelbrot's Weyl integral-based version. Numerically, simulation is achieved by filtering white Gaussian noise through the Cholesky decomposition of the FBM covariance matrix.
 
-## Types of diffusion coefficient
+## Kinds of diffusion coefficient
 
-\\x\\ is this math?
+`fbm_sim` uses one of two distinct parameterizations of the diffusion coefficient. See the notebook `definitions.ipynb` for a description of each kind.
 
 ## Example usage
 
