@@ -1,9 +1,13 @@
 # fbm_sim
-Fast simulator for short fractional Brownian motion (FBM) trajectories in pure Python
+Simulate short fractional Brownian motion (FBM) trajectories in pure Python
 
 ## Purpose
 
-Simulate many FBM trajectories, very quickly. This repository uses the Riemann-Liouville version of the FBM, rather than Mandelbrot's Weyl integral-based version. Numerically this is achieved by filtering white Gaussian noise through the Cholesky decomposition of the FBM covariance matrix.
+A simple tool to simulate many FBM trajectories, quickly. This repository uses the version of the FBM based on the Riemann-Liouville integral, rather than Mandelbrot's Weyl integral-based version. Numerically, simulation is achieved by filtering white Gaussian noise through the Cholesky decomposition of the FBM covariance matrix.
+
+## Types of diffusion coefficient
+
+$x$ is this math?
 
 ## Example usage
 
@@ -15,7 +19,7 @@ Simulate many FBM trajectories, very quickly. This repository uses the Riemann-L
 		128,         # simulate 128 steps of this FBM
 		0.6,         # Hurst parameter 0.6
 		D=2.0,       # Diffusion coefficient 2.0 m^2 s^-1
-		dt=0.00548,  # 5.48 second intervals
+		dt=0.00548,  # 5.48 millisecond intervals
 		D_type=2     # type of diffusion coefficient used
 	)
 
